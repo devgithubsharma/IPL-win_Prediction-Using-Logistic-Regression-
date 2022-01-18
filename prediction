@@ -1,5 +1,7 @@
 %Seperating out the dependent and independent features from the dataframe.
 %Splitting out the training and testing data from X and y.
+
+% ===========================Complete Code===========================
 X=final_df.iloc[:,:-1]
 y=final_df.iloc[:,-1]
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=20)
@@ -25,3 +27,5 @@ pipe=Pipeline(steps=[
 pipe.fit(X_train,y_train)
 y_pred=pipe.predict(X_test)
 accuracy_score(y_test,y_pred)
+
+% ===========================Code End===========================
