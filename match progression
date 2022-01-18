@@ -1,0 +1,35 @@
+%Create a match progression function
+def match_progression(x_df,match_id,pipe):
+    match = x_df[x_df['match_id'] == match_id]
+    match = match[(match['ball'] == 6)]
+    temp_df = match[['batting_team','bowling_team','city','runs_left','balls_left','total_runs_x','crr','rrr','wickets_left']].dropna()
+    temp_df = temp_df[temp_df['balls_left'] != 0]
+    result = pipe.predict_proba(temp_df)
+    
+%Losing Probability of the chasing team after every over
+%Winning Probability of the chasing team after every over
+    temp_df['lose_proba'] = np.round(result.T[0]*100,1)
+    temp_df['win_proba'] = np.round(result.T[1]*100,1)
+    temp_df['end_of_over'] = range(1,temp_df.shape[0]+1)
+    
+    
+%Runs left after each over
+%How much overs have been completed 
+%Wickets left after every over
+    target = temp_df['total_runs_x'].values[0]
+    batting_team=temp_df['batting_team'].values[0]
+    bowling_team=temp_df['bowling_team'].values[0]
+    runs = list(temp_df['runs_left'].values)
+    new_runs = runs[:]
+    runs.insert(0,target)
+    temp_df['runs_after_over'] = np.array(runs)[:-1] - np.array(new_runs)
+  
+    print('Batting_team:- ',batting_team)
+    print('Bowling_team:- ',bowling_team)
+    print("Target-",target)
+    
+%Get the table for the 20 overs of chasing team to get the complete idea of chances of its winning or losing.
+    temp_df = temp_df[['end_of_over','runs_after_over','wickets_left','lose_proba','win_proba']]
+    return temp_df,target
+    
+    
