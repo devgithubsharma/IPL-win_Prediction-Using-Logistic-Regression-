@@ -1,0 +1,19 @@
+%Plot for losing probability of chasing team after every over
+%Plot for winnign probability of chasing team after every over
+%Plot for wickets left after every over
+%Bar plot for runs after each over
+
+%  =======================Complete Code============================
+
+plt.figure(figsize=(15,8))
+ax = plt.axes()
+ax.set_facecolor("black")
+plt.plot(temp_df['end_of_over'],temp_df['lose_proba'],color='red',linewidth=4)
+plt.plot(temp_df['end_of_over'],temp_df['win_proba'],color='green',linewidth=4)
+plt.plot(temp_df['end_of_over'],temp_df['wickets_left'],color='yellow',linewidth=4)
+plt.bar(temp_df['end_of_over'],temp_df['runs_after_over'])
+plt.xlabel('end_of_over')
+plt.title('Target:- '+ str(target))
+plt.show()
+
+%    ===========================================================
