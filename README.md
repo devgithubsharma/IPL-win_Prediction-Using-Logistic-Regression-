@@ -1,6 +1,6 @@
 # IPL-win_Prediction-Using-Logistic-Regression-
 <i>**In this Project, we will going to predict  the Winning and Losing Probability of Chasing Team in Ipl,
-by determining the relevant features from the the give Datasets like current run rate,required run rate,wickets left,
+by utilising the relevant features from the the given Datasets like current run rate,required run rate,wickets left,
 runs left, balls left etc, and finally analyse the match progression by table formation and plots for loss, win probability ,wickets etc.** </i>
 
 ![image](https://user-images.githubusercontent.com/96568994/151913900-781b9ffe-8d1e-470c-a9e9-20f353beadd8.png)
